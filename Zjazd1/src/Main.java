@@ -38,7 +38,7 @@ public class Main {
         System.out.println("Lista 1: " + anotherPersonList);
 
         Set<Person> personSet = Set.of(person1, person2, person3);
-        Set<Person> anotherPersonSet = new HashSet<>(); // set nie jest indeksowalny i nie moga powtarzac sie w nim elementy chyba ze dodane do hash seta to nie wywala bledy a po prostu nei dodaje tego elementu
+        Set<Person> anotherPersonSet = new HashSet<>();
 
         anotherPersonSet.add(person1);
         anotherPersonSet.add(person1);
