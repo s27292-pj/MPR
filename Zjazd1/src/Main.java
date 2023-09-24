@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -59,6 +60,41 @@ public class Main {
 
         System.out.println(ageList);
 
+        int result = ageList.stream()
+                .reduce(0, Integer::sum);
 
+        System.out.println("Suma wieku: " + result);
+
+        double srednia = (double) result / ageList.size();
+
+        System.out.println("Srednia wieku: " + srednia);
+
+        List<String> nameList = personList.stream()
+                .map(Person::getName).collect(Collectors.toList());
+
+        System.out.println(nameList);
+
+        List<Person> overTwentyFive = personList.stream()
+                .filter(age -> age.getAge() > 25)
+                .collect(Collectors.toList());
+
+        System.out.println(overTwentyFive);
+
+        List<String> alphabeticalOrder = personList.stream()
+                        .map(Person::getName)
+                        .sorted().collect(Collectors.toList());
+
+        System.out.println(alphabeticalOrder);
+
+        personList.stream().forEach(res -> System.out.println(res.getName() + " " + res.getAge()));
+
+        Person minAge = personList.stream()
+                .min(Comparator.comparing(Person::getAge)).get();
+        Person maxAge = personList.stream()
+                .max(Comparator.comparing(Person::getAge)).get();
+
+        System.out.println("min age: " + minAge.getName() + " " + minAge.getAge());
+
+        System.out.println("max age: " + maxAge.getName() + " " + maxAge.getAge());
     }
 }
